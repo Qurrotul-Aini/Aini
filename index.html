@@ -39,45 +39,47 @@ f''''(a) = 16e^{2x}
 f(x) = f(0) + \frac {f^1(0)}{1!}x + \frac {f^2(0)}{2!}x^2 + \frac {f^3(0)}{3!}x^3 + \frac {f^4(0)}{4!}x^4 + ....... + \frac{f^n(0)}{n!}x^n
 </script> </div> <div> <div class=MathJax_Preview> f(x) = e^0 + \frac {2e^0}{1!}(4) + \frac {4e^0}{2!}(4)^2 + \frac {8e^0}{3!}(4)^3 + \frac {16e^0}{4!}(4)^4 + ....... + \frac{f^n(0)}{n!}x^n </div> <script type="math/tex; mode=display">
 f(x) = e^0 + \frac {2e^0}{1!}(4) + \frac {4e^0}{2!}(4)^2 + \frac {8e^0}{3!}(4)^3 + \frac {16e^0}{4!}(4)^4 + ....... + \frac{f^n(0)}{n!}x^n
-</script> </div> <p>Lakukanlah penghitungan terus-menerus dimana nantinya nilai e&lt;0,001.</p> <h4 id=source-code-dari-studi-kasus>Source Code dari Studi Kasus<a class=headerlink href=#source-code-dari-studi-kasus title="Permanent link">&para;</a></h4> <div class=codehilite><pre><span></span><span class=k>def</span> <span class=nf>f</span><span class=p>(</span><span class=n>x</span><span class=p>):</span>
+</script> </div> <p>Lakukanlah penghitungan terus-menerus dimana nantinya nilai e&lt;0,001.</p> <h4 id=source-code-dari-studi-kasus>Source Code dari Studi Kasus<a class=headerlink href=#source-code-dari-studi-kasus title="Permanent link">&para;</a></h4> <div class=codehilite><pre><span></span><span class=kn>import</span> <span class=nn>math</span>
+<span class=n>error</span> <span class=o>=</span> <span class=mf>0.001</span>
+<span class=k>def</span> <span class=nf>f</span><span class=p>(</span><span class=n>x</span><span class=p>):</span>
     <span class=n>f_turunan</span> <span class=o>=</span> <span class=mi>1</span>
     <span class=n>current</span><span class=o>=</span><span class=n>i</span><span class=o>=</span><span class=mi>0</span>
     <span class=n>iteration</span> <span class=o>=</span> <span class=bp>True</span>
     <span class=k>while</span> <span class=n>iteration</span> <span class=p>:</span>
         <span class=n>old</span> <span class=o>=</span> <span class=n>current</span>
         <span class=n>current</span> <span class=o>+=</span> <span class=p>(</span><span class=n>f_turunan</span><span class=o>*</span><span class=p>(</span><span class=n>x</span><span class=o>**</span><span class=n>i</span><span class=p>))</span><span class=o>/</span><span class=n>math</span><span class=o>.</span><span class=n>factorial</span><span class=p>(</span><span class=n>i</span><span class=p>)</span>
-        <span class=k>print</span><span class=p>(</span><span class=s1>&#39;iterasi ke-&#39;</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=s1>&#39;=&#39;</span><span class=p>,</span> <span class=n>current</span><span class=o>-</span><span class=n>old</span><span class=p>)</span>
+        <span class=k>print</span><span class=p>(</span><span class=s1>&#39;iterasi ke-&#39;</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=s1>&#39;=&#39;</span><span class=p>,</span> <span class=n>f_turunan</span><span class=p>,</span> <span class=s1>&#39;(e^2x=&#39;</span><span class=p>,</span> <span class=n>current</span><span class=p>,</span><span class=s1>&#39;) (Ea=&#39;</span><span class=p>,</span> <span class=n>current</span><span class=o>-</span><span class=n>old</span><span class=p>,</span><span class=s1>&#39;)&#39;</span><span class=p>)</span>
         <span class=k>if</span> <span class=n>current</span><span class=o>-</span><span class=n>old</span> <span class=o>&lt;</span> <span class=n>error</span><span class=p>:</span>
             <span class=n>iteration</span> <span class=o>=</span> <span class=bp>False</span>
         <span class=k>else</span><span class=p>:</span>
             <span class=n>f_turunan</span> <span class=o>*=</span><span class=mi>2</span>
             <span class=n>i</span> <span class=o>+=</span><span class=mi>1</span>
 <span class=n>f</span><span class=p>(</span><span class=mi>4</span><span class=p>)</span>
-</pre></div> <p>Output : </p> <div class=codehilite><pre><span></span>iterasi ke- 0 = 1.0
-iterasi ke- 1 = 8.0
-iterasi ke- 2 = 32.0
-iterasi ke- 3 = 85.33333333333333
-iterasi ke- 4 = 170.66666666666669
-iterasi ke- 5 = 273.0666666666666
-iterasi ke- 6 = 364.08888888888896
-iterasi ke- 7 = 416.1015873015872
-iterasi ke- 8 = 416.1015873015872
-iterasi ke- 9 = 369.8680776014112
-iterasi ke- 10 = 295.89446208112895
-iterasi ke- 11 = 215.195972422639
-iterasi ke- 12 = 143.46398161509296
-iterasi ke- 13 = 88.28552714774924
-iterasi ke- 14 = 50.448872655856576
-iterasi ke- 15 = 26.90606541645684
-iterasi ke- 16 = 13.45303270822842
-iterasi ke- 17 = 6.330838921519444
-iterasi ke- 18 = 2.8137061873417224
-iterasi ke- 19 = 1.184718394670199
-iterasi ke- 20 = 0.47388735786807956
-iterasi ke- 21 = 0.18052851728316455
-iterasi ke- 22 = 0.06564673355751438
-iterasi ke- 23 = 0.022833646454728296
-iterasi ke- 24 = 0.0076112154847578495
-iterasi ke- 25 = 0.0024355889549951826
-iterasi ke- 26 = 0.0007494119863622473
-</pre></div> <p>Dari implementasi code diatas dapat disimpulkan bahwa nilai e yang mendekati nilai sesungguhnya berada pada iterasi ke-26.</p> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid"> <a href=getting-started/ title=Profil class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i> </div> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Previous </span> Profil </span> </div> </a> <a href=license/ title="Metode Newton Rapshon" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel=next> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Next </span> Metode Newton Rapshon </span> </div> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2020 Qurrotul Aini </div> powered by <a href=https://www.mkdocs.org target=_blank rel=noopener>MkDocs</a> and <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs</a> </div> <div class=md-footer-social> <link rel=stylesheet href=assets/fonts/font-awesome.css> <a href=http://struct.cc target=_blank rel=noopener title=globe class="md-footer-social__link fa fa-globe"></a> <a href=https://github.com/squidfunk target=_blank rel=noopener title=github-alt class="md-footer-social__link fa fa-github-alt"></a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener title=twitter class="md-footer-social__link fa fa-twitter"></a> <a href=https://www.linkedin.com/in/squidfunk/ target=_blank rel=noopener title=linkedin class="md-footer-social__link fa fa-linkedin"></a> </div> </div> </div> </footer> </div> <script src=assets/javascripts/application.df00da5d.js></script> <script>app.initialize({version:"1.0.4",url:{base:"."}})</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script> </body> </html>
+</pre></div> <p>Output : </p> <div class=codehilite><pre><span></span>iterasi ke- 0 = 1 (e^2x= 1.0 ) (Ea= 1.0 )
+iterasi ke- 1 = 2 (e^2x= 9.0 ) (Ea= 8.0 )
+iterasi ke- 2 = 4 (e^2x= 41.0 ) (Ea= 32.0 )
+iterasi ke- 3 = 8 (e^2x= 126.33333333333333 ) (Ea= 85.33333333333333 )
+iterasi ke- 4 = 16 (e^2x= 297.0 ) (Ea= 170.66666666666669 )
+iterasi ke- 5 = 32 (e^2x= 570.0666666666666 ) (Ea= 273.0666666666666 )
+iterasi ke- 6 = 64 (e^2x= 934.1555555555556 ) (Ea= 364.08888888888896 )
+iterasi ke- 7 = 128 (e^2x= 1350.2571428571428 ) (Ea= 416.1015873015872 )
+iterasi ke- 8 = 256 (e^2x= 1766.35873015873 ) (Ea= 416.1015873015872 )
+iterasi ke- 9 = 512 (e^2x= 2136.226807760141 ) (Ea= 369.8680776014112 )
+iterasi ke- 10 = 1024 (e^2x= 2432.12126984127 ) (Ea= 295.89446208112895 )
+iterasi ke- 11 = 2048 (e^2x= 2647.317242263909 ) (Ea= 215.195972422639 )
+iterasi ke- 12 = 4096 (e^2x= 2790.781223879002 ) (Ea= 143.46398161509296 )
+iterasi ke- 13 = 8192 (e^2x= 2879.0667510267513 ) (Ea= 88.28552714774924 )
+iterasi ke- 14 = 16384 (e^2x= 2929.515623682608 ) (Ea= 50.448872655856576 )
+iterasi ke- 15 = 32768 (e^2x= 2956.4216890990647 ) (Ea= 26.90606541645684 )
+iterasi ke- 16 = 65536 (e^2x= 2969.874721807293 ) (Ea= 13.45303270822842 )
+iterasi ke- 17 = 131072 (e^2x= 2976.2055607288125 ) (Ea= 6.330838921519444 )
+iterasi ke- 18 = 262144 (e^2x= 2979.0192669161543 ) (Ea= 2.8137061873417224 )
+iterasi ke- 19 = 524288 (e^2x= 2980.2039853108245 ) (Ea= 1.184718394670199 )
+iterasi ke- 20 = 1048576 (e^2x= 2980.6778726686925 ) (Ea= 0.47388735786807956 )
+iterasi ke- 21 = 2097152 (e^2x= 2980.8584011859757 ) (Ea= 0.18052851728316455 )
+iterasi ke- 22 = 4194304 (e^2x= 2980.924047919533 ) (Ea= 0.06564673355751438 )
+iterasi ke- 23 = 8388608 (e^2x= 2980.946881565988 ) (Ea= 0.022833646454728296 )
+iterasi ke- 24 = 16777216 (e^2x= 2980.9544927814727 ) (Ea= 0.0076112154847578495 )
+iterasi ke- 25 = 33554432 (e^2x= 2980.9569283704277 ) (Ea= 0.0024355889549951826 )
+iterasi ke- 26 = 67108864 (e^2x= 2980.957677782414 ) (Ea= 0.0007494119863622473 )
+</pre></div> <p>Dari implementasi code diatas dapat disimpulkan bahwa nilai e yang mendekati nilai sesungguhnya berada pada iterasi ke-26 dengan nilai 2980.957677782414 dimana jika nilai sesungguhnya - nilai iterasi ke-26 = 2980.957987041728 - 2980.957677782414 adalah 0.000309259314</p> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid"> <a href=getting-started/ title=Profil class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i> </div> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Previous </span> Profil </span> </div> </a> <a href=license/ title="Metode Newton Rapshon" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel=next> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Next </span> Metode Newton Rapshon </span> </div> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2020 Qurrotul Aini </div> powered by <a href=https://www.mkdocs.org target=_blank rel=noopener>MkDocs</a> and <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs</a> </div> <div class=md-footer-social> <link rel=stylesheet href=assets/fonts/font-awesome.css> <a href=http://struct.cc target=_blank rel=noopener title=globe class="md-footer-social__link fa fa-globe"></a> <a href=https://github.com/squidfunk target=_blank rel=noopener title=github-alt class="md-footer-social__link fa fa-github-alt"></a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener title=twitter class="md-footer-social__link fa fa-twitter"></a> <a href=https://www.linkedin.com/in/squidfunk/ target=_blank rel=noopener title=linkedin class="md-footer-social__link fa fa-linkedin"></a> </div> </div> </div> </footer> </div> <script src=assets/javascripts/application.df00da5d.js></script> <script>app.initialize({version:"1.0.4",url:{base:"."}})</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script> </body> </html>
