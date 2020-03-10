@@ -30,7 +30,7 @@ f(n) = f(x_{n}) + (x-x_{n})f^{1}(x_{n})+\frac{1}{2}(x-x_{n})^{2}f^{n}(x_{n})+...
 </script> </div> <h5 id=algoritma-metode-newton-rapshon>Algoritma Metode Newton-Rapshon<a class=headerlink href=#algoritma-metode-newton-rapshon title="Permanent link">&para;</a></h5> <p>​ Berikut algoritma dari metode Newton-Rapshon:</p> <ol> <li>Definisikan fungsi f(x) dan f'(x)</li> <li>Tentukan toleransi error (e) dan iterasi maksimum (n)</li> <li>Tentukan nilai pendekatan awal (x0)</li> <li>Hitung f(x0) dan f'(x0)</li> <li>Untuk iterasi i=1 sampai dengan |f(xi)|&gt;=e, dimana akar persamaanya diperoleh dari nilai xi terakhir, berikut formulanya</li> </ol> <div> <div class=MathJax_Preview> x_{n+1}=x_{n} - \frac {f(x_{n})}{f^{1}(x_{n})} </div> <script type="math/tex; mode=display">
 x_{n+1}=x_{n} - \frac
 {f(x_{n})}{f^{1}(x_{n})}
-</script> </div> <h5 id=program-newton-rapshon-pada-fungsi-persamaan-non-linear>Program Newton-Rapshon pada Fungsi Persamaan Non-Linear<a class=headerlink href=#program-newton-rapshon-pada-fungsi-persamaan-non-linear title="Permanent link">&para;</a></h5> <p>``</p> <div class=codehilite><pre><span></span>import math
+</script> </div> <h5 id=program-newton-rapshon-pada-fungsi-persamaan-non-linear>Program Newton-Rapshon pada Fungsi Persamaan Non-Linear<a class=headerlink href=#program-newton-rapshon-pada-fungsi-persamaan-non-linear title="Permanent link">&para;</a></h5> <div class=codehilite><pre><span></span>import math
 e = 2.71828
 
 def fungsi(x):
@@ -57,7 +57,7 @@ while iterasi &lt;= perulangan  and selisih&gt;error :
         print(&quot;Perulangan Mencapai Batas Maksimal dengan hasil = &quot;, f_2)
     else :
         print(&quot;Toleransi tidak terpenuhi&quot;)
-</pre></div> <p>Output :</p> <p>``</p> <div class=codehilite><pre><span></span>Masukkan nilai awal = 1
+</pre></div> <p>Output :</p> <div class=codehilite><pre><span></span>Masukkan nilai awal = 1
 Masukkan nilai error = 0.001
 Masukkan maksimal pengulangan = 15
 Iterasi ke =  1 , x =  0.0 , f( 0.0 ) =  1.0 , selisih =  0.001
