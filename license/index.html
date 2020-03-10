@@ -30,4 +30,42 @@ f(n) = f(x_{n}) + (x-x_{n})f^{1}(x_{n})+\frac{1}{2}(x-x_{n})^{2}f^{n}(x_{n})+...
 </script> </div> <h5 id=algoritma-metode-newton-rapshon>Algoritma Metode Newton-Rapshon<a class=headerlink href=#algoritma-metode-newton-rapshon title="Permanent link">&para;</a></h5> <p>​ Berikut algoritma dari metode Newton-Rapshon:</p> <ol> <li>Definisikan fungsi f(x) dan f'(x)</li> <li>Tentukan toleransi error (e) dan iterasi maksimum (n)</li> <li>Tentukan nilai pendekatan awal (x0)</li> <li>Hitung f(x0) dan f'(x0)</li> <li>Untuk iterasi i=1 sampai dengan |f(xi)|&gt;=e, dimana akar persamaanya diperoleh dari nilai xi terakhir, berikut formulanya</li> </ol> <div> <div class=MathJax_Preview> x_{n+1}=x_{n} - \frac {f(x_{n})}{f^{1}(x_{n})} </div> <script type="math/tex; mode=display">
 x_{n+1}=x_{n} - \frac
 {f(x_{n})}{f^{1}(x_{n})}
-</script> </div> <h5 id=program-newton-rapshon-pada-fungsi-persamaan-non-linear>Program Newton-Rapshon pada Fungsi Persamaan Non-Linear<a class=headerlink href=#program-newton-rapshon-pada-fungsi-persamaan-non-linear title="Permanent link">&para;</a></h5> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid"> <a href=.. title="Metode MacLaurin" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i> </div> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Previous </span> Metode MacLaurin </span> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2020 Qurrotul Aini </div> powered by <a href=https://www.mkdocs.org target=_blank rel=noopener>MkDocs</a> and <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs</a> </div> <div class=md-footer-social> <link rel=stylesheet href=../assets/fonts/font-awesome.css> <a href=http://struct.cc target=_blank rel=noopener title=globe class="md-footer-social__link fa fa-globe"></a> <a href=https://github.com/squidfunk target=_blank rel=noopener title=github-alt class="md-footer-social__link fa fa-github-alt"></a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener title=twitter class="md-footer-social__link fa fa-twitter"></a> <a href=https://www.linkedin.com/in/squidfunk/ target=_blank rel=noopener title=linkedin class="md-footer-social__link fa fa-linkedin"></a> </div> </div> </div> </footer> </div> <script src=../assets/javascripts/application.df00da5d.js></script> <script>app.initialize({version:"1.0.4",url:{base:".."}})</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script> </body> </html>
+</script> </div> <h5 id=program-newton-rapshon-pada-fungsi-persamaan-non-linear>Program Newton-Rapshon pada Fungsi Persamaan Non-Linear<a class=headerlink href=#program-newton-rapshon-pada-fungsi-persamaan-non-linear title="Permanent link">&para;</a></h5> <p>``</p> <div class=codehilite><pre><span></span>import math
+e = 2.71828
+
+def fungsi(x):
+    x = float((e**x) - (4*x))
+    return x
+
+def fungsiturunan(x):
+    x = float((e**x) - (4))
+    return x
+
+x = float(input(&#39;Masukkan nilai awal = &#39;))
+error = float(input(&#39;Masukkan nilai error = &#39;))
+perulangan = int(input(&#39;Masukkan maksimal pengulangan = &#39;))
+
+iterasi = 0
+selisih = error+1
+while iterasi &lt;= perulangan  and selisih&gt;error :
+    iterasi += 1
+    f_2 = x - (fungsi(x)/fungsiturunan(x))
+    selisih = math.fabs(f_2 - x)
+    x = f_2
+    print(&quot;Iterasi ke = &quot;,iterasi,&quot;, x = &quot;,f_2, &quot;, f(&quot;,f_2,&quot;) = &quot;,fungsi(f_2),&quot;, selisih = &quot;,error)
+    if iterasi &lt;= perulangan:
+        print(&quot;Perulangan Mencapai Batas Maksimal dengan hasil = &quot;, f_2)
+    else :
+        print(&quot;Toleransi tidak terpenuhi&quot;)
+</pre></div> <p>Output :</p> <p>``</p> <div class=codehilite><pre><span></span>Masukkan nilai awal = 1
+Masukkan nilai error = 0.001
+Masukkan maksimal pengulangan = 15
+Iterasi ke =  1 , x =  0.0 , f( 0.0 ) =  1.0 , selisih =  0.001
+Perulangan Mencapai Batas Maksimal dengan hasil =  0.0
+Iterasi ke =  2 , x =  0.3333333333333333 , f( 0.3333333333333333 ) =  0.06227877883196098 , selisih =  0.001
+Perulangan Mencapai Batas Maksimal dengan hasil =  0.3333333333333333
+Iterasi ke =  3 , x =  0.35724635301940616 , f( 0.35724635301940616 ) =  0.0004022049593612742 , selisih =  0.001
+Perulangan Mencapai Batas Maksimal dengan hasil =  0.35724635301940616
+Iterasi ke =  4 , x =  0.35740281572145605 , f( 0.35740281572145605 ) =  1.734656973617632e-08 , selisih =  0.001
+Perulangan Mencapai Batas Maksimal dengan hasil =  0.35740281572145605
+</pre></div> <p>Penjelasan code :</p> <p>1.Pada program diatas menggunakan fungsi persamaan non linear dengan fungsi f(x) = e^x-4x dengan turunan pertamanya adalah f'(x) = e^x-4</p> <p>2.Membuat sebuah fungsi inputan berupa nilai awal, nilai error dan jumlah perulangan untuk <em>stopping condition</em></p> <p>3.Deklarasikan iterasi = 0 untuk perulangan yang ke-0 yang nantinya akan ditambah setiap kali perulangan</p> <p>4.Deklarasikan selisih untuk xb-x0 sebagai perbandingan</p> <p>5.Lakukan perulangan dengan kondisi iterasi kurang dari sama dengan inputan, maksimal iterasi dan selisih lebih dari <em>error / epsilon</em></p> <p>6.Hitung xb dengan rumus yang sudah kita dapatkan sebelumnya </p> <p>7.Lakukan perbandingan, jika mencapai nilai <em>True</em> maka toleransi tidak terpenuhi, namun perulangan sudah mencapai batas</p> <p>8.Jika pengecekan selisih &gt; error bernilai <em>True</em>, maka toleransi akan terpenuhi dengan nilai error serta fungsi x pada iterasi ke-n.</p> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid"> <a href=.. title="Metode MacLaurin" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i> </div> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Previous </span> Metode MacLaurin </span> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2020 Qurrotul Aini </div> powered by <a href=https://www.mkdocs.org target=_blank rel=noopener>MkDocs</a> and <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs</a> </div> <div class=md-footer-social> <link rel=stylesheet href=../assets/fonts/font-awesome.css> <a href=http://struct.cc target=_blank rel=noopener title=globe class="md-footer-social__link fa fa-globe"></a> <a href=https://github.com/squidfunk target=_blank rel=noopener title=github-alt class="md-footer-social__link fa fa-github-alt"></a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener title=twitter class="md-footer-social__link fa fa-twitter"></a> <a href=https://www.linkedin.com/in/squidfunk/ target=_blank rel=noopener title=linkedin class="md-footer-social__link fa fa-linkedin"></a> </div> </div> </div> </footer> </div> <script src=../assets/javascripts/application.df00da5d.js></script> <script>app.initialize({version:"1.0.4",url:{base:".."}})</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script> </body> </html>
