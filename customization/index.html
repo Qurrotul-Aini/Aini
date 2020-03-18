@@ -33,44 +33,66 @@ error=\int_{a}^{b} f(x) dx-\frac{b-a}{N} [\frac{f(a)+f(b)}{2}+\sum_{k=1}^{N-1}f(
 error=-\frac{(b-a)^{3}}{12N^{2}}f^{2}(\xi)
 </script> </div> <p>Dan perkiraan kesalahan asimptotik untuk N diberikan oleh</p> <div> <div class=MathJax_Preview> error=-\frac{(b-a)^{2}}{12N^{2}}[f^{1}(b)-f^{1}(a)]+O(N^{-3}) </div> <script type="math/tex; mode=display">
 error=-\frac{(b-a)^{2}}{12N^{2}}[f^{1}(b)-f^{1}(a)]+O(N^{-3})
-</script> </div> <p><strong>Berikut code program untuk penyelesaian integrasi numerik</strong></p> <div class=codehilite><pre><span></span><span class=k>def</span> <span class=nf>fungsi</span> <span class=p>(</span><span class=n>x</span><span class=p>)</span> <span class=p>:</span>
+</script> </div> <p><strong>Berikut code program untuk penyelesaian integrasi numerik</strong></p> <div class=codehilite><pre><span></span><span class=k>def</span> <span class=nf>fungsi</span> <span class=p>(</span><span class=n>x</span><span class=p>):</span>
     <span class=n>y</span> <span class=o>=</span> <span class=mi>1</span><span class=o>/</span><span class=p>(</span><span class=mi>1</span><span class=o>+</span><span class=n>x</span><span class=p>)</span>
     <span class=k>return</span> <span class=n>y</span>
 
-<span class=k>print</span><span class=p>(</span><span class=s2>&quot;f(x) = 1/(1+x)&quot;</span><span class=p>)</span>
-<span class=n>a</span> <span class=o>=</span> <span class=nb>float</span><span class=p>(</span><span class=nb>input</span><span class=p>(</span><span class=s2>&quot;Masukkan batas bawah integral : &quot;</span><span class=p>))</span>
-<span class=n>b</span> <span class=o>=</span> <span class=nb>float</span><span class=p>(</span><span class=nb>input</span><span class=p>(</span><span class=s2>&quot;Masukkan batas atas integral : &quot;</span><span class=p>))</span>
+<span class=k>print</span><span class=p>(</span><span class=s2>&quot;fungsi yang digunakan adalah&quot;</span><span class=p>)</span>
+<span class=k>print</span><span class=p>(</span><span class=s2>&quot;&quot;</span><span class=p>)</span>
+<span class=k>print</span><span class=p>(</span><span class=s2>&quot;</span><span class=se>\t\t</span><span class=s2>&quot;</span><span class=p>,</span><span class=s2>&quot;f(x) = 1/(1+x)&quot;</span><span class=p>)</span>
+<span class=k>print</span><span class=p>(</span><span class=s2>&quot;&quot;</span><span class=p>)</span>
 
-<span class=k>print</span><span class=p>(</span><span class=s2>&quot;iterasi&quot;</span><span class=p>,</span><span class=s2>&quot;n&quot;</span><span class=p>,</span><span class=s2>&quot;trapesium&quot;</span><span class=p>)</span>
-<span class=k>for</span> <span class=n>iterasi</span> <span class=ow>in</span> <span class=nb>range</span> <span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=mi>16</span><span class=p>,</span><span class=mi>1</span><span class=p>):</span>
-    <span class=n>n</span><span class=o>=</span><span class=mi>2</span><span class=o>**</span><span class=n>iterasi</span>
-    <span class=n>h</span><span class=o>=</span><span class=p>(</span><span class=n>b</span><span class=o>-</span><span class=n>a</span><span class=p>)</span><span class=o>/</span><span class=n>n</span>
+
+<span class=n>a</span> <span class=o>=</span> <span class=nb>float</span><span class=p>(</span><span class=nb>input</span><span class=p>(</span><span class=s2>&quot;masukkan batas bawah integral : &quot;</span><span class=p>))</span>
+<span class=n>b</span> <span class=o>=</span> <span class=nb>float</span><span class=p>(</span><span class=nb>input</span><span class=p>(</span><span class=s2>&quot;masukkan batas atas integral : &quot;</span><span class=p>))</span>
+<span class=n>n</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=nb>input</span><span class=p>(</span><span class=s2>&quot;masukkan n : &quot;</span><span class=p>))</span>
+<span class=n>eror</span> <span class=o>=</span> <span class=p>[]</span>
+<span class=k>print</span><span class=p>(</span><span class=s2>&quot;&quot;</span><span class=p>)</span>
+<span class=k>print</span><span class=p>(</span><span class=s2>&quot;----------------Hasil Integrasi-----------------&quot;</span><span class=p>)</span>
+<span class=k>print</span> <span class=p>(</span><span class=s2>&quot;iterasi&quot;</span><span class=p>,</span><span class=s2>&quot;</span><span class=se>\t</span><span class=s2>&quot;</span><span class=p>,</span><span class=s2>&quot;n&quot;</span><span class=p>,</span><span class=s2>&quot;</span><span class=se>\t\t</span><span class=s2>&quot;</span><span class=p>,</span><span class=s2>&quot;Trapezoid&quot;</span><span class=p>)</span>
+
+<span class=k>for</span> <span class=n>iterasi</span> <span class=ow>in</span> <span class=nb>range</span> <span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=n>n</span><span class=p>):</span>
+    <span class=n>n</span> <span class=o>=</span> <span class=mi>2</span><span class=o>**</span><span class=n>iterasi</span>
+    <span class=n>h</span> <span class=o>=</span> <span class=p>(</span><span class=n>b</span><span class=o>-</span><span class=n>a</span><span class=p>)</span><span class=o>/</span><span class=n>n</span>
 
     <span class=n>xi</span> <span class=o>=</span> <span class=n>a</span>
     <span class=n>y</span> <span class=o>=</span> <span class=mi>0</span>
-    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=n>n</span><span class=p>):</span>
-        <span class=n>xi</span> <span class=o>=</span> <span class=n>xi</span><span class=o>+</span><span class=n>h</span>
+    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span> <span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=n>n</span><span class=p>):</span>
+        <span class=n>xi</span> <span class=o>=</span> <span class=n>xi</span> <span class=o>+</span> <span class=n>h</span>
         <span class=n>y</span> <span class=o>+=</span> <span class=n>fungsi</span><span class=p>(</span><span class=n>xi</span><span class=p>)</span>
-    <span class=n>hasil</span> <span class=o>=</span> <span class=p>(</span><span class=n>h</span><span class=p>)</span><span class=o>*</span><span class=p>((</span><span class=n>fungsi</span><span class=p>(</span><span class=n>a</span><span class=p>)</span><span class=o>+</span><span class=p>(</span><span class=mi>2</span><span class=o>*</span><span class=n>y</span><span class=p>)</span><span class=o>+</span><span class=n>fungsi</span><span class=p>(</span><span class=n>b</span><span class=p>))</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+    <span class=n>trap</span> <span class=o>=</span> <span class=p>((</span><span class=n>h</span><span class=p>)</span><span class=o>*</span><span class=p>(</span><span class=n>fungsi</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>+</span> <span class=p>(</span><span class=mi>2</span><span class=o>*</span><span class=n>y</span><span class=p>)</span> <span class=o>+</span> <span class=n>fungsi</span><span class=p>(</span><span class=n>b</span><span class=p>)))</span><span class=o>/</span><span class=mi>2</span>
+    <span class=n>eror</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>trap</span><span class=p>)</span>
+    <span class=k>print</span> <span class=p>(</span><span class=n>iterasi</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span><span class=s2>&quot;</span><span class=se>\t\t</span><span class=s2>&quot;</span><span class=p>,</span><span class=n>n</span><span class=p>,</span><span class=s2>&quot;</span><span class=se>\t\t</span><span class=s2>&quot;</span><span class=p>,</span><span class=n>trap</span><span class=p>)</span>
+<span class=k>print</span> <span class=p>(</span><span class=n>eror</span><span class=p>[</span><span class=n>iterasi</span><span class=o>-</span><span class=mi>1</span><span class=p>])</span>
+<span class=k>print</span><span class=p>(</span><span class=n>eror</span><span class=p>[</span><span class=n>iterasi</span><span class=p>])</span>
+<span class=n>hasil</span> <span class=o>=</span> <span class=p>(</span><span class=n>eror</span><span class=p>[</span><span class=n>iterasi</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=o>-</span><span class=n>eror</span><span class=p>[</span><span class=n>iterasi</span><span class=p>])</span>
+<span class=k>print</span><span class=p>(</span><span class=n>hasil</span><span class=p>)</span>
+<span class=k>print</span> <span class=p>(</span><span class=s2>&quot;estimasi error : &quot;</span><span class=o>+</span><span class=nb>str</span><span class=p>(</span><span class=n>hasil</span><span class=p>))</span>
+</pre></div> <p><strong>Berikut hasil running dari program diatas</strong></p> <div class=codehilite><pre><span></span>fungsi yang digunakan adalah
 
-    <span class=k>print</span> <span class=p>(</span><span class=n>iterasi</span><span class=p>,</span><span class=n>n</span><span class=p>,</span><span class=n>hasil</span><span class=p>)</span>
-</pre></div> <p><strong>Berikut hasil running dari program diatas</strong></p> <div class=codehilite><pre><span></span>Masukkan batas bawah integral : 0
+                 f(x) = 1/(1+x)
 
-Masukkan batas atas integral : 1
-iterasi n trapesium
-1 2 0.7083333333333333
-2 4 0.6970238095238095
-3 8 0.6941218503718504
-4 16 0.6933912022075267
-5 32 0.6932082082692488
-6 64 0.6931624388834033
-7 128 0.6931509952281075
-8 256 0.6931481342324433
-9 512 0.6931474189784099
-10 1024 0.6931472401645831
-11 2048 0.6931471954611083
-12 4096 0.6931471842852348
-13 8192 0.69314718149127
-14 16384 0.6931471807927745
-15 32768 0.6931471806181497
-</pre></div> <p>Dari program di atas , diperoleh hasil integral terakhir adalah 0.6931471806181497 dengan menggunakan inputan batas bawah 0, batas atas 1 dan jumlah pembagi 10.</p> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid"> <a href=../specimen/ title="Eliminasi Gauss, Jacobi dan Gauss Seidel" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i> </div> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Previous </span> Eliminasi Gauss, Jacobi dan Gauss Seidel </span> </div> </a> <a href=../license/ title="Metode Newton Rapshon" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel=next> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Next </span> Metode Newton Rapshon </span> </div> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2020 Qurrotul Aini </div> powered by <a href=https://www.mkdocs.org target=_blank rel=noopener>MkDocs</a> and <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs</a> </div> <div class=md-footer-social> <link rel=stylesheet href=../assets/fonts/font-awesome.css> <a href=http://struct.cc target=_blank rel=noopener title=globe class="md-footer-social__link fa fa-globe"></a> <a href=https://github.com/squidfunk target=_blank rel=noopener title=github-alt class="md-footer-social__link fa fa-github-alt"></a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener title=twitter class="md-footer-social__link fa fa-twitter"></a> <a href=https://www.linkedin.com/in/squidfunk/ target=_blank rel=noopener title=linkedin class="md-footer-social__link fa fa-linkedin"></a> </div> </div> </div> </footer> </div> <script src=../assets/javascripts/application.df00da5d.js></script> <script>app.initialize({version:"1.0.4",url:{base:".."}})</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script> </body> </html>
+
+masukkan batas bawah integral : 0
+
+masukkan batas atas integral : 1
+
+masukkan n : 10
+
+----------------Hasil Integrasi-----------------
+iterasi          n               Trapezoid
+1                1               0.75
+2                2               0.7083333333333333
+3                4               0.6970238095238095
+4                8               0.6941218503718504
+5                16              0.6933912022075267
+6                32              0.6932082082692488
+7                64              0.6931624388834033
+8                128             0.6931509952281075
+9                256             0.6931481342324433
+10               512             0.6931474189784099
+0.6931481342324433
+0.6931474189784099
+7.152540333343893e-07
+estimasi error : 7.152540333343893e-07
+</pre></div> <p>Dari program di atas , diperoleh nilai estimasi errornya adalah 7.152540333343893e-07 dengan menggunakan inputan batas bawah 0, batas atas 1 dan jumlah pembagi 10.</p> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid"> <a href=../specimen/ title="Eliminasi Gauss, Jacobi dan Gauss Seidel" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i> </div> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Previous </span> Eliminasi Gauss, Jacobi dan Gauss Seidel </span> </div> </a> <a href=../license/ title="Metode Newton Rapshon" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel=next> <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"> <span class=md-flex__ellipsis> <span class=md-footer-nav__direction> Next </span> Metode Newton Rapshon </span> </div> <div class="md-flex__cell md-flex__cell--shrink"> <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2020 Qurrotul Aini </div> powered by <a href=https://www.mkdocs.org target=_blank rel=noopener>MkDocs</a> and <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs</a> </div> <div class=md-footer-social> <link rel=stylesheet href=../assets/fonts/font-awesome.css> <a href=http://struct.cc target=_blank rel=noopener title=globe class="md-footer-social__link fa fa-globe"></a> <a href=https://github.com/squidfunk target=_blank rel=noopener title=github-alt class="md-footer-social__link fa fa-github-alt"></a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener title=twitter class="md-footer-social__link fa fa-twitter"></a> <a href=https://www.linkedin.com/in/squidfunk/ target=_blank rel=noopener title=linkedin class="md-footer-social__link fa fa-linkedin"></a> </div> </div> </div> </footer> </div> <script src=../assets/javascripts/application.df00da5d.js></script> <script>app.initialize({version:"1.0.4",url:{base:".."}})</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script> </body> </html>
